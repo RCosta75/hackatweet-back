@@ -7,7 +7,7 @@ const User = require('../models/users');
 const { checkBody } = require('../modules/checkbody');
 
 /* GET Users listing */
-router.get('/', (req, res) {
+router.get('/', (req, res) =>{
   User.find().then(data =>{
     res.json({result: true, users: data})
   })

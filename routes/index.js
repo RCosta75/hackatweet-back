@@ -4,7 +4,7 @@ var router = express.Router();
 const Tweet = require('../models/tweet');
 
 /* GET PAGE ACCUEIL */
-router.get('/', (req, res) {
+router.get('/', (req, res) => {
   Tweet.find()
   .then(response => response.json())
   .then(data => {
