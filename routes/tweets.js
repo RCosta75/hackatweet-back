@@ -8,7 +8,8 @@ router.post('/post' , (req,res) => {
     const newTweet = new Tweet({
         message : req.body.message,
         firstName : req.body.firstName,
-        username : req.body.username
+        username : req.body.username,
+        date: new Date(),
     })
     newTweet.save().then(data => {
         res.json({result : true, message : data.message})
