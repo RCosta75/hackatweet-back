@@ -6,6 +6,10 @@ const User = require('../models/users');
 
 //Message posted
 router.post('/post/:token' , (req,res) => {
+    if(!req.body.message){
+        return res.json({result: false, error: "Missing fields"})
+    }
+
     User.findOne({token: req.params.token })
     .then(data => {
     
@@ -21,7 +25,9 @@ router.post('/post/:token' , (req,res) => {
 
 // Messages listing
 router.get('/get' , (req,res) => {
-    Tweet.find().then(data => {
+    Tweet.find()
+    .populate('author')
+    .then(data => {
         res.json({result: true, data})
     })
 })
