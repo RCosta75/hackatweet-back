@@ -12,7 +12,8 @@ var usersRouter = require('./routes/users');
 var tweetsRouter = require('./routes/tweets')
 
 var app = express();
-app.use(cors())
+const cors = require('cors');
+app.use(cors());
 
 
 const cors = require('cors');
