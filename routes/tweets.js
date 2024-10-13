@@ -13,7 +13,7 @@ router.post("/post/:token", (req, res) => {
   User.findOne({ token: req.params.token }).then((data) => {
     const newTweet = new Tweet({
       message: req.body.message,
-      date: new Date(),
+      date: req.body.date,
       author: data,
     });
     newTweet.save().then((newDoc) => {
@@ -31,5 +31,18 @@ router.get("/get", (req, res) => {
       res.json({ result: true, data });
     });
 });
+
+// Delete message
+router.delete("/delete" , (req, res) => {
+  Tweet.findOne({ _id: req.body.id})
+  .then((data) => {
+    if(data){
+      Tweet.deleteOne({_id: req.body.id})
+      .then((data)=> {
+        res.json({result : true, data: data})
+      })
+    }
+  })
+})
 
 module.exports = router;

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const hashtagSchema = mongoose.Schema({
   hashtag: String,
-  authors: { type: mongoose.Schema.Types.ObjectId, ref: 'users' }
+  tweet: { type: mongoose.Schema.Types.ObjectId, ref: 'tweets' }
 });
 
 const Hashtag = mongoose.model('hashtags', hashtagSchema);
